@@ -4,7 +4,13 @@ import time as time
 
 def nSolver():
     x = s1 - dif1
-    print ("Sequence:", dif1, "n", x)    
+    
+    if x > 0:
+        print ("Sequence:", dif1, "n +", x)
+    elif x < 0:
+        print ("Sequence:", dif1, "n", x)
+    else:
+        print ("Sequence:", dif1, "n")
 
 
 def qSolver():
