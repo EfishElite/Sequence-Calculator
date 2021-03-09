@@ -1,110 +1,132 @@
 import random as rd
 import time as time
 
+def cubicSequence():
+    a = rd.randint(1,25)
+    b = rd.randint(1,25)
+    c = rd.randint(1,25)
+    d = rd.randint(1,25)
 
-def nSolver():
-    x = s1 - dif1
-    
-    if x > 0:
-        print ("Sequence:", dif1, "n +", x)
-    elif x < 0:
-        print ("Sequence:", dif1, "n", x)
-    else:
-        print ("Sequence:", dif1, "n")
+    n = 1
 
-
-def qSolver():
-    if dif1a == 2 and dif1b == 2:
-        a = 1
-        print ("A:", a)
-        n = 1
-        r1 = s1 - n**2
+    while n!=6:
+        sequence1 = a*n**3 + b*n**2 + c*n + d
         n = n + 1
-        r2 = s2 - n**2
-        n = n + 1
-        r3 = s3 - n**2
-        n = n + 1
-        r4 = s4 - n**2
-        n = n + 1
-        r5 = s5 - n**2
-        diff1 = r2 - r1
-        b = diff1
-        print ("B:", b)
-        c = r1 - b
-        print ("C:", c)
         
-    elif dif1a!=2:
-        a = dif1a/2
-        print ("A:", a)
-        n = 1
-        r1 = s1 - a*(n**2)
+        sequence2 = a*n**3 + b*n**2 + c*n + d
         n = n + 1
-        r2 = s2 - a*(n**2)
+        
+        sequence3 = a*n**3 + b*n**2 + c*n + d
         n = n + 1
-        r3 = s3 - a*(n**2)
+        
+        sequence4 = a*n**3 + b*n**2 + c*n + d
         n = n + 1
-        r4 = s4 - a*(n**2)
+        
+        sequence5 = a*n**3 + b*n**2 + c*n + d
         n = n + 1
-        r5 = s5 - a*(n**2)
-        diff1 = r2 - r1
-        b = diff1
-        print ("B:", b)
-        c = r1 - b
-        print ("C:", c)
+        
+    if n == 6:
+        print ("Sequence:", sequence1, sequence2, sequence3, sequence4, sequence5)
+
+
+def quadSequence():
+    a = rd.randint(1,25)
+    b = rd.randint(1,25)
+    c = rd.randint(1,25)
+
+    n = 1
+
+    while n!=7:
+        sequence1 = a*n**2 + b*n + c
+        n = n + 1
+        
+        sequence2 = a*n**2 + b*n + c
+        n = n + 1
+        
+        sequence3 = a*n**2 + b*n + c
+        n = n + 1
+        
+        sequence4 = a*n**2 + b*n + c
+        n = n + 1
+
+        sequence5 = a*n**2 + b*n + c
+        n = n + 1
+
+        sequence6 = a*n**2 + b*n + c
+        n = n + 1
+
+
+    if n == 7:
+        print ("Sequence:", sequence1, sequence2, sequence3, sequence4, sequence5, sequence6)
+
 
 def geometric():
-    a = s1
-    r = s2/s1
-    n = int(input("Enter the location of the number:"))
-    location = n-1
-    answer1 = r**location
-    answer = answer1*a
-    print (answer)
 
+    n = 1
 
-def cubicSolver():
-    a = dif2a/6
-    print ("A:", a)
-    b = dif1a - 12*a
-    b = b/2
-    print ("B:", b)
-    c = s2 - s1 - 7*a - 3*b
-    print ("C:", c)
-    d = 4 - a - b - c
-    print ("D:", d)
+    r = rd.randint(2, 7)
+
+    a = r
+
+    n = n + 1
     
+    sequence1 = a*r**(n-1)
+    n = n + 1
+
+    sequence2 = a*r**(n-1)
+    n = n + 1
+
+    sequence3 = a*r**(n-1)
+    n = n + 1
+
+    sequence4 = a*r**(n-1)
+    n = n + 1
+ 
+    if n == 6:
+        print ("Sequence:", a, sequence1, sequence2, sequence3, sequence4)
+
+def fibonacci():
+    nterms = int(input("How many terms? "))
+    
+    n1, n2 = 0, 1
+    count = 0
+
+    if nterms <= 0:
+       print("Please enter a positive integer")
+    elif nterms == 1:
+       print("Fibonacci sequence upto",nterms,":")
+       print(n1)
+    else:
+       print("Fibonacci sequence:")
+       while count < nterms:
+           print(n1)
+           nth = n1 + n2
+           n1 = n2
+           n2 = nth
+           count += 1
+
 
 while True:
-    s1 = int(input("Enter number 1:"))
-    s2 = int(input("Enter number 2:"))
-    s3 = int(input("Enter number 3:"))
-    s4 = int(input("Enter number 4:"))
-    s5 = int(input("Enter number 5:"))
-
-
-    dif1 = s2 - s1
-    dif2 = s3 - s2
-    dif3 = s4 - s3
-    dif4 = s5 - s4
-
-    dif1a = dif2 - dif1
-    dif1b = dif3 - dif2
-    dif1c = dif4 - dif3
-
-    dif2a = dif1b - dif1a
-    dif2b = dif1c - dif1b
+    print("This will calculate an+b sequences, quadratics, any value in a fibonacci sequence, and cubic sequences")
+    time.sleep(3)
     
-    if dif1 == dif2:
-        nSolver()
+    sequence = input("A: Quadratic, B: Cubic, C: Geometric, D: Fibonacci")
+
+    if sequence == "A".lower():
+        quadSequence()
+        time.sleep(5)
         
-    elif dif1a == dif1b and dif1b == dif1c:
-        qSolver()
+    elif sequence == "B".lower():
+        cubicSequence()
+        time.sleep(5)
 
-    elif s1 == s2/2 or s1 == s2/3 or s1 == s2/4 or s1 == s2/5:
+    elif sequence =="C".lower():
         geometric()
-
-    elif dif2a == dif2b:
-        cubicSolver()
+        time.sleep(5)
+        
+    elif sequence == "D".lower():
+        fibonacci()
+        time.sleep(5)
         
     else:
-        print ("Enter correct numbers:")
+        print ("Enter a valid input")
